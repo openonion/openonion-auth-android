@@ -2,9 +2,9 @@
 
 Android authenticator today; OpenOnion's human-approval surface tomorrow.
 
-> **Status: design bootstrap.** There is no APK and no production-ready
-> cryptography in this repository yet. Do not place real authentication secrets
-> in it.
+> **Status: developer preview.** Version 0.1.0 is being built as a local,
+> offline TOTP authenticator. Until the security review is complete, use only
+> test credentials—not production accounts.
 
 ## Product direction
 
@@ -20,12 +20,12 @@ OpenOnion Auth will be delivered in deliberately small phases:
 The first design goal is understanding and freezing the trust boundaries, not
 inventing cryptography. Start with the Chinese [concept map](docs/concept-map.zh-CN.md).
 
-## Current repository scope
+## Version 0.1 scope
 
-- product and security concepts;
-- architecture and threat-model decisions;
-- protocol schemas and test vectors once reviewed; and
-- the Android project after the local-vault design is accepted.
+- import standard `otpauth://totp` credentials by QR code or URI;
+- encrypt credentials locally with an Android Keystore-backed vault;
+- generate six- or eight-digit TOTP codes offline; and
+- keep Agent access and cloud sync disabled until their protocol is reviewed.
 
 Planning issue: [openonion/connectonion#1358](https://github.com/openonion/connectonion/issues/1358)
 
@@ -45,4 +45,4 @@ must receive independent review before production credentials are used.
 
 ## License
 
-TBD before the repository is made public.
+Apache-2.0. See [LICENSE](LICENSE).
