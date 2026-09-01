@@ -60,7 +60,8 @@ android {
 
     lint {
         warningsAsErrors = true
-        disable += setOf("AndroidGradlePluginVersion", "GradleDependency")
+        // Android 17 / API 37 is still a preview. v0.1 targets stable API 36.
+        disable += setOf("AndroidGradlePluginVersion", "GradleDependency", "OldTargetApi")
     }
 }
 
