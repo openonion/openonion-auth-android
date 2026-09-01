@@ -1,5 +1,7 @@
 # Architecture decisions
 
+- [ADR 0001: v0.1 is local TOTP only](0001-v0.1-local-totp.md)
+
 Record one reviewed decision per file before implementation depends on it.
 
 Planned decisions:

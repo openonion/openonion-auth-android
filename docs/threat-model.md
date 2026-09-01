@@ -1,6 +1,7 @@
 # Threat model
 
-> Status: scaffold only. This must be completed before real credentials are used.
+> Status: v0.1 developer-preview baseline. Independent review and the remaining
+> gates below are still required before real credentials are used.
 
 ## Assets
 
@@ -28,6 +29,29 @@
   be rotated.
 - Rooted-device policy, encrypted cloud backup, relay availability, and advanced
   Agent policies remain design decisions.
+
+## v0.1 implemented controls
+
+- no Internet permission, Agent transport, credential export, or cloud sync;
+- AES-256-GCM authenticated encryption with a non-exportable Android Keystore
+  wrapping key and per-record random nonce;
+- credential ID bound as AEAD additional authenticated data;
+- app data excluded from Android backup and device transfer;
+- `FLAG_SECURE` on distributable builds; a separate non-distributable screenshot
+  build type exists only for UI evidence;
+- copied OTP values are marked sensitive for Android clipboard handling;
+- RFC 6238 SHA-1/SHA-256/SHA-512 test vectors; and
+- strict TOTP-only URI parsing with duplicate-field and issuer checks.
+
+## v0.1 known gaps
+
+- no biometric/device-credential prompt on each app open;
+- no recovery, encrypted export, device revocation, or key rotation flow;
+- third-party QR scanning dependency and Android Keystore behavior require
+  independent review across supported devices;
+- debug-key-signed GitHub APK is for disposable test credentials only; and
+- TOTP remains phishable and a copied code temporarily exists in the system
+  clipboard when the user explicitly selects Copy.
 
 ## Review gates
 
